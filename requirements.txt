@@ -3,3 +3,5 @@ openpyxl
 flask
 flask-sqlalchemy
 flask-wtf
+flask-marshmallow
+poetry
