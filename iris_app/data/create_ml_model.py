@@ -64,13 +64,10 @@ def main():
     iris_file = Path(__file__).parent.joinpath("iris.csv")
     iris_data = pd.read_csv(iris_file)
 
-    model_dt = DecisionTreeClassifier()
     model_lr = LogisticRegression()
 
-    pickle_file_dt = Path(__file__).parent.joinpath("model_dt.pkl")
     pickle_file_lr = Path(__file__).parent.joinpath("model_lr.pkl")
 
-    create_model(iris_data, model_dt, pickle_file_dt)
     create_model(iris_data, model_lr, pickle_file_lr)
 
 

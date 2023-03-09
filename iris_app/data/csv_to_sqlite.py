@@ -14,3 +14,4 @@ iris = pd.read_csv(iris_file)
 
 # Write the data to a table in the sqlite database (data/iris.db)
 iris.to_sql("iris", engine, if_exists="append", index=False)
+
