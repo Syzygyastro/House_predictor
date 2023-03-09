@@ -17,7 +17,9 @@ from sqlalchemy.exc import IntegrityError, NoResultFound
 from iris_app.forms import LoginForm, PredictionForm, RegisterForm
 from iris_app import db, login_manager
 from iris_app.models import Iris, User
+from ML_house import predicting_houseprice
 
+print(predicting_houseprice(2024, "Price (All)"))
 
 pickle_file = Path(__file__).parent.joinpath("data", "model_lr.pkl")
 IRIS_MODEL = pickle.load(open(pickle_file, "rb"))
@@ -40,35 +42,13 @@ def index():
         # Make the prediction
         prediction = make_prediction(features_from_form)
 
-        prediction_text = f"Predicted Iris type: {prediction}"
+        prediction_text = f"Predicted House price ath: {prediction}"
 
         return render_template(
             "index.html", form=form, prediction_text=prediction_text
         )
     return render_template("index.html", form=form)
 
-
-# The predict route is no longer needed
-@app.get("/predict")
-def predict():
-    """Predict iris species
-
-    Takes the arguments sepal_length,sepal_width,petal_length,petal_width  from an HTTP request. Passes the arguments to the model and returns a prediction (classification of Iris species).
-
-    Returns:
-        species(str): A string of the iris species.
-    """
-
-    sepal_length = request.args.get("sep-len")
-    sepal_width = request.args.get("sep-wid")
-    petal_length = request.args.get("pet-len")
-    petal_width = request.args.get("pet-wid")
-
-    prediction = make_prediction(
-        [sepal_length, sepal_width, petal_length, petal_width]
-    )
-
-    return prediction
 
 
 def make_prediction(flower_values):
@@ -89,16 +69,9 @@ def make_prediction(flower_values):
 
     # convert the prediction to the variety name
     varieties = {0: "iris-setosa", 1: "iris-versicolor", 2: "iris-virginica"}
-    variety = np.vectorize(varieties.__getitem__)(prediction[0])
+    variety = "np.vectorize(varieties.__getitem__)(prediction[0])"
 
     return variety
-
-
-@app.route("/iris")
-def iris_list():
-    """Render page with a list of all the iris entries from the database"""
-    iris = db.session.execute(db.select(Iris)).scalars()
-    return render_template("iris.html", iris_list=iris)
 
 
 @app.route("/register", methods=["GET", "POST"])

@@ -10,8 +10,6 @@ class Iris(db.Model):
     rowid = db.Column(db.Integer, primary_key=True)
     sepal_length = db.Column(db.Float, nullable=False)
     sepal_width = db.Column(db.Float, nullable=False)
-    petal_length = db.Column(db.Float, nullable=False)
-    petal_width = db.Column(db.Float, nullable=False)
     species = db.Column(db.Text, nullable=False)
 
     def __repr__(self):
