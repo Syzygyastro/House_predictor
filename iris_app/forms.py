@@ -1,12 +1,14 @@
 from flask_wtf import FlaskForm
 from wtforms import (
     DecimalField,
+    IntegerField,
     StringField,
     EmailField,
     PasswordField,
     BooleanField,
+    SelectField
 )
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.validators import DataRequired, ValidationError, NumberRange
 from iris_app.models import User
 from iris_app import db
 
@@ -15,10 +17,9 @@ class PredictionForm(FlaskForm):
     """Fields to a form to input the values required for an iris species prediction"""
 
     # https://wtforms.readthedocs.io/en/2.3.x/fields/#wtforms.fields.DecimalField
-    sepal_length = DecimalField("Desired year house price", validators=[DataRequired()])
-    sepal_width = StringField("Desired house type", validators=[DataRequired()])
-    petal_length = DecimalField(validators=[DataRequired()])
-    petal_width = DecimalField(validators=[DataRequired()])
+    sepal_length = IntegerField("Desired Year", validators=[DataRequired(), NumberRange(min= 2022, max= 2060, message=None)])
+    sepal_width = SelectField("Desired house type", choices=[('Price (All)', 'Average Houses'), ('Price (New)', 'Newer Houses'), \
+    ('Price (Modern)', 'Modern houses'), ('Price (Older)', 'Older Houses')], validators=[DataRequired()])
 
 
 class RegisterForm(FlaskForm):

@@ -54,7 +54,6 @@ def create_app():
         from . import routes
 
         # Create the tables in the database if they do not already exist
-        from .models import Iris
 
         db.create_all()
 

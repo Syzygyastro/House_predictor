@@ -1,4 +1,5 @@
 from pathlib import Path
+import numpy as np
 from datetime import timedelta
 from urllib.parse import urlparse, urljoin
 import pickle
@@ -16,14 +17,11 @@ import numpy as np
 from sqlalchemy.exc import IntegrityError, NoResultFound
 from iris_app.forms import LoginForm, PredictionForm, RegisterForm
 from iris_app import db, login_manager
-from iris_app.models import Iris, User
-from ML_house import predicting_houseprice
+from iris_app.models import User
 
-print(predicting_houseprice(2024, "Price (All)"))
 
-pickle_file = Path(__file__).parent.joinpath("data", "model_lr.pkl")
-IRIS_MODEL = pickle.load(open(pickle_file, "rb"))
-
+ml_model = {"Price (All)": "model_all_lr.pkl", "Price (New)": "model_new_lr.pkl", \
+            "Price (Modern)": "model_modern_lr.pkl", "Price (Older)": "model_old_lr.pkl"}
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -32,17 +30,11 @@ def index():
 
     if form.validate_on_submit():
         # Get all values from the form
-        features_from_form = [
-            form.sepal_length.data,
-            form.sepal_width.data,
-            form.petal_length.data,
-            form.petal_width.data,
-        ]
 
         # Make the prediction
-        prediction = make_prediction(features_from_form)
+        prediction = make_prediction(form.sepal_length.data, form.sepal_width.data)
 
-        prediction_text = f"Predicted House price for selected year is: {prediction}"
+        prediction_text = f"Predicted House price for selected year is: £{prediction}"
 
         return render_template(
             "index.html", form=form, prediction_text=prediction_text
@@ -62,14 +54,15 @@ def make_prediction(year, house_type):
     """
 
     # Convert to a 2D numpy array with float values, needed as input to the model
-    
-
+    lr_file = ml_model[house_type]
+    pickle_file = Path(__file__).parent.joinpath("data", lr_file)
+    IRIS_MODEL = pickle.load(open(pickle_file, "rb"))
     # Get a prediction from the model
-    prediction = IRIS_MODEL.predict(input_values)
+    prediction = IRIS_MODEL.predict([[int(year)]])
 
     # convert the prediction to the variety name
-    varieties = {0: "iris-setosa", 1: "iris-versicolor", 2: "iris-virginica"}
-    variety = "np.vectorize(varieties.__getitem__)(prediction[0])"
+    
+    variety = int(prediction[0])
 
     return variety
 
