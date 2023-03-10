@@ -2,7 +2,7 @@ from dash import dcc, Output, Input, html
 import plotly.express as px
 import pandas as pd
 import dash
-df = pd.read_csv(r'iris_app/paralympic_dash_app/data/house_prices_&_GDP_prepared.csv')
+df = pd.read_csv(r'house_price_app/house_price_dash_app/data/house_prices_&_GDP_prepared.csv')
 
 
 dropdown = dcc.Dropdown(

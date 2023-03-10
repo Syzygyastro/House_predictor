@@ -15,9 +15,9 @@ from flask import (
 from flask_login import logout_user, login_required, login_user
 import numpy as np
 from sqlalchemy.exc import IntegrityError, NoResultFound
-from iris_app.forms import LoginForm, PredictionForm, RegisterForm
-from iris_app import db, login_manager
-from iris_app.models import User
+from house_price_app.forms import LoginForm, PredictionForm, RegisterForm
+from house_price_app import db, login_manager
+from house_price_app.models import User
 
 
 ml_model = {"Price (All)": "model_all_lr.pkl", "Price (New)": "model_new_lr.pkl", \
@@ -32,7 +32,7 @@ def index():
         # Get all values from the form
 
         # Make the prediction
-        prediction = make_prediction(form.sepal_length.data, form.sepal_width.data)
+        prediction = make_prediction(form.year_wanted.data, form.house_type_selection.data)
 
         prediction_text = f"Predicted House price for selected year is: £{prediction}"
 
@@ -56,9 +56,9 @@ def make_prediction(year, house_type):
     # Convert to a 2D numpy array with float values, needed as input to the model
     lr_file = ml_model[house_type]
     pickle_file = Path(__file__).parent.joinpath("data", lr_file)
-    IRIS_MODEL = pickle.load(open(pickle_file, "rb"))
+    HOUSE_PRICE_MODEL = pickle.load(open(pickle_file, "rb"))
     # Get a prediction from the model
-    prediction = IRIS_MODEL.predict([[int(year)]])
+    prediction = HOUSE_PRICE_MODEL.predict([[int(year)]])
 
     # convert the prediction to the variety name
     

@@ -3,8 +3,8 @@ import plotly.express as px
 import pandas as pd
 import dash
 
-df = pd.read_csv(r'iris_app/paralympic_dash_app/data/house_prices_quarterly_prepared.csv')
-temp_df = pd.read_csv(r'iris_app/paralympic_dash_app/data/house_prices_initial.csv')
+df = pd.read_csv(r'house_price_app/house_price_dash_app/data/house_prices_quarterly_prepared.csv')
+temp_df = pd.read_csv(r'house_price_app/house_price_dash_app/data/house_prices_initial.csv')
 temp_df = temp_df[['Date', 'Change (All)', 'Change (New)', 'Change (Modern)', 'Change (Older)']]
 df = df[['Date', 'Price (All)', 'Price (New)', 'Price (Modern)', 'Price (Older)']]
 

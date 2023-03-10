@@ -14,3 +14,4 @@ house_price = pd.read_csv(house_price_file)
 
 # Write the data to a table in the sqlite database (data/iris.db)
 house_price.to_sql("house_prices_&_GDP_prepared", engine, if_exists="append", index=False)
+

@@ -4,7 +4,7 @@ import pandas as pd                        # pip install pandas
 
 # incorporate data into app
 # Source - https://www.cdc.gov/nchs/pressroom/stats_of_the_states.htm
-df2 = pd.read_csv(r'iris_app/paralympic_dash_app/data/house_prices_quarterly_prepared.csv')
+df2 = pd.read_csv(r'house_price_app/house_price_dash_app/data/house_prices_quarterly_prepared.csv')
 df2 = df2.drop(0)  # Following data has been removed as the particular year does not have all 4 seasons
 df2 = df2.drop(249)
 df2 = df2.drop(250)

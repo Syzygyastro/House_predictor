@@ -2,7 +2,7 @@ from pathlib import Path
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from iris_app.paralympic_dash_app.house_price_dash_app import (
+from house_price_app.house_price_dash_app.house_price_dash_app import (
     create_dash_app,
 )
 
@@ -32,7 +32,7 @@ def create_app():
     app.config["SECRET_KEY"] = "saULPgD9XU8vzLVk7kyLBw"
     # configure the SQLite database location
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + str(
-        PROJECT_ROOT.joinpath("data", "iris.db")
+        PROJECT_ROOT.joinpath("data", "house_prices_&_GDP_prepared.db")
     )
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["SQLALCHEMY_ECHO"] = False
@@ -58,3 +58,5 @@ def create_app():
         db.create_all()
 
     return app
+
+#python -m flask --app 'house_price_app:create_app()' --debug run
