@@ -16,7 +16,7 @@ class PredictionForm(FlaskForm):
 
     # https://wtforms.readthedocs.io/en/2.3.x/fields/#wtforms.fields.DecimalField
     sepal_length = DecimalField("Desired year house price", validators=[DataRequired()])
-    sepal_width = DecimalField("Desired house type", validators=[DataRequired()])
+    sepal_width = StringField("Desired house type", validators=[DataRequired()])
     petal_length = DecimalField(validators=[DataRequired()])
     petal_width = DecimalField(validators=[DataRequired()])
 

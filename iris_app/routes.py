@@ -42,7 +42,7 @@ def index():
         # Make the prediction
         prediction = make_prediction(features_from_form)
 
-        prediction_text = f"Predicted House price ath: {prediction}"
+        prediction_text = f"Predicted House price for selected year is: {prediction}"
 
         return render_template(
             "index.html", form=form, prediction_text=prediction_text
@@ -51,7 +51,7 @@ def index():
 
 
 
-def make_prediction(flower_values):
+def make_prediction(year, house_type):
     """Takes the flower values, makes a model using the prediction and returns a string of the predicted flower variety
 
     Parameters:
@@ -62,7 +62,7 @@ def make_prediction(flower_values):
     """
 
     # Convert to a 2D numpy array with float values, needed as input to the model
-    input_values = np.asarray([flower_values], dtype=float)
+    
 
     # Get a prediction from the model
     prediction = IRIS_MODEL.predict(input_values)
