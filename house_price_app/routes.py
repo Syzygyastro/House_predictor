@@ -81,7 +81,7 @@ def register():
             # Remove to replace with Flash message
             # text = f"<p>You are registered! {repr(new_user)}</p>"
             # return text
-            text = f"You are registered! {repr(new_user)}"
+            text = f"You are registered!"
             flash(text)
             return redirect(url_for("index"))
         except IntegrityError:
