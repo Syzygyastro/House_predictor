@@ -79,7 +79,7 @@ def test_error_when_out_of_range_selected(test_client):
     AND the status code should be 200 OK
     """
     form_data = {
-        "year_wanted": "james",
+        "year_wanted": "no",
         "house_type_selection": "Price (All)"
 
     }
