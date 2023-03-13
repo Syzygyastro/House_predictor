@@ -11,7 +11,7 @@ class Config:
     SECRET_KEY = "saULPgD9XU8vzLVk7kyLBw"
     # configure the SQLite database location
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + str(
-        PROJECT_ROOT.joinpath("data", "iris.db")
+        PROJECT_ROOT.joinpath("data", "house_prices_&_GDP_prepared.db")
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
