@@ -7,7 +7,7 @@ def test_index_success(test_client):
     GIVEN a running Flask app
     WHEN an HTTP GET request is made to '/'
     THEN the status code should be 200
-    AND the page should contain the the html <title>Iris Home</title>"
+    AND the page should contain the the html <title>UK House Prices<</title>"
     """
     response = test_client.get("/")
     assert response.status_code == 200
@@ -79,10 +79,9 @@ def test_error_when_out_of_range_selected(test_client):
     AND the status code should be 200 OK
     """
     form_data = {
-        "year_wanted": "no",
-        "house_type_selection": "Price (All)"
+        "year_wanted": 203,
 
     }
     response = test_client.post("/", data=form_data)
     assert response.status_code == 200
-    assert "This field is required." in response.data.decode()
+    assert b"This field is required." in response.data
