@@ -1,7 +1,8 @@
 from house_price_app import db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from flask import current_app as app
+from house_price_app import db
 
 
 class User(UserMixin, db.Model):
@@ -33,3 +34,23 @@ class User(UserMixin, db.Model):
         """
         clsname = self.__class__.__name__
         return f"{clsname}: <{self.id}, {self.email}>"
+    
+
+class Event(db.Model):
+    """Paralympic event"""
+
+    __tablename__ = "house_prices"
+    Date = db.Column(db.Integer, primary_key=True)
+    price_all = db.Column(db.Text, nullable=False)
+    price_new = db.Column(db.Integer, nullable=False)
+    price_modern = db.Column(db.Text, nullable=False)
+    price_old = db.Column(db.Text)
+    gdp = db.Column(db.Integer)
+
+    def __repr__(self):
+        """
+        Returns the attributes of the event as a string
+        :returns str
+        """
+        clsname = self.__class__.__name__
+        return f"<{clsname}: {self.Date},{self.price_all}, {self.price_new}, {self.price_modern}, {self.price_old}, {self.gdp}>"

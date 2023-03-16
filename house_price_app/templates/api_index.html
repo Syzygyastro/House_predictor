@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+{% set title = 'Past house price data' %}
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    h1 {text-align: center;
+    text-decoration: underline;}
+    table, th, td {
+      border: 1px solid rgb(0, 0, 0);
+      border-collapse: collapse;
+      
+    }
+    
+    table.center {
+      margin-left: auto; 
+      margin-right: auto;
+    } 
+    ul {
+        list-style: none;
+        padding-left: 0;
+          }
+    tr:nth-child(even) {background-color: #f7f7f7;}
+    th {
+        background-color: #4e91dd;
+        color: rgb(0, 0, 0);
+        text-align: center
+        }
+    td {
+        text-align: center;
+        }
+        
+    </style>
+    </head>
+    <body>
+
+
+<h1>House price & GDP data from 1952</h1>
+<br>
+<h4>To find information of house prices from the past, select a year from below:</h4>
+<br>
+<table class="center">  
+    <tr>
+      <th style="width:200px">1952-1970</th>
+      <th style="width:200px">1980-1998</th>
+      <th style="width:200px">2000-2015</th>
+    </tr>
+    <tr>
+      <td style="text-align: center"><ul style="list-style: none;">
+        {% for x in range(0,19) %}
+        <li><a id="{{ event_list[x]['Date'] }}" href="{{ url_for('main.display_event', event_id=event_list[x]['Date'])}}">
+            {{event_list[x]['Date'] }} </a></li>
+        {% endfor %}
+    </ul></td >
+      <td style="text-align: center"><ul style="list-style: none;">
+        {% for x in range(28,47) %}
+        <li><a id="{{ event_list[x]['Date'] }}" href="{{ url_for('main.display_event', event_id=event_list[x]['Date'])}}">
+            {{event_list[x]['Date'] }} </a></li>
+        {% endfor %}
+    </ul></td>
+      <td style="text-align: center"><ul style="list-style: none;">
+        {% for x in range(48,64) %}
+        <li><a id="{{ event_list[x]['Date'] }}" href="{{ url_for('main.display_event', event_id=event_list[x]['Date'])}}">
+            {{event_list[x]['Date'] }} </a></li>
+        {% endfor %}
+    
+    </ul></td>
+    </tr>
+  </table>
+
+{% endblock %}

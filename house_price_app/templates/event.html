@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% set title = event['Date'] %}
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    h1 {text-align: center;
+        text-decoration: underline;}
+    table, th, td {
+      border: 1px solid rgb(0, 0, 0);
+      border-collapse: collapse;
+      
+    }
+    
+    table.center {
+      margin-left: auto; 
+      margin-right: auto;
+    } 
+    ul {
+        list-style: none;
+        padding-left: 0;
+          }
+    tr:nth-child(even) {background-color: #f7f7f7;}
+    th {
+        background-color: #4e91dd;
+        color: rgb(0, 0, 0);
+        text-align: center
+        }
+    td {
+        text-align: center;
+        }
+        
+    </style>
+    </head>
+    <body>
+
+<br>
+<h1>Year: {{ event['Date']}}</h1>
+<br>
+<br>
+<table class="center">  
+    <tr>
+      <th style="width:200px">Average House</th>
+      <th style="width:200px">New Houses</th>
+      <th style="width:200px">Modern Houses</th>
+      <th style="width:200px">Older Houses</th>
+      <th style="width:200px">GDP</th>
+    </tr>
+    <tr>
+      <td style="text-align: center"><ul style="list-style: none;">
+        <li id="Price (All)">£{{ event['price_all']}}</li>
+    </ul></td >
+      <td style="text-align: center"><ul style="list-style: none;">
+        <li id="Price (New)">£{{ event['price_new']}}</li>
+    </ul></td>
+    <td style="text-align: center"><ul style="list-style: none;">
+        <li id="Price (Modern)">£{{ event['price_modern']}}</li>
+    </ul></td>
+    <td style="text-align: center"><ul style="list-style: none;">
+        <li id="Price (Older)">£{{ event['price_old']}}
+    </ul></td>
+    <td style="text-align: center"><ul style="list-style: none;">
+        <li id="GDP">GDP: £{{ event['gdp']}} </li>
+    </tr>
+  </table>
+{% endblock %}

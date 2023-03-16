@@ -2,6 +2,7 @@ from pathlib import Path
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_marshmallow import Marshmallow
 from house_price_app.house_price_dash_app.house_price_dash_app import (
     create_dash_app,
 )
@@ -12,7 +13,8 @@ PROJECT_ROOT = Path(__file__).parent
 
 # Create a global SQLAlchemy object
 db = SQLAlchemy()
-
+# Create a global Flask-Marshmallow object
+ma = Marshmallow()
 # Create Flask-Login
 login_manager = LoginManager()
 
@@ -91,5 +93,11 @@ def run_app():
 
         db.create_all()
 
+    # Uses a helper function to initialise extensions
+
+    from house_price_app.routes import main_bp
+    from house_price_app.api_routes import api_bp
+    app.register_blueprint(api_bp)
+    app.register_blueprint(main_bp)
     return app
 #python -m flask --app 'house_price_app:run_app()' --debug run
