@@ -96,8 +96,6 @@ def run_app():
     # Uses a helper function to initialise extensions
 
     from house_price_app.routes import main_bp
-    from house_price_app.api_routes import api_bp
-    app.register_blueprint(api_bp)
     app.register_blueprint(main_bp)
     return app
 #python -m flask --app 'house_price_app:run_app()' --debug run
