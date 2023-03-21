@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% set title = 'Dashboard iframe test...' %}
+{% block content %}
+<style>
+iframe{
+    display: block; /* iframes are inline by default */ 
+    height: 90vh; /* Set height to 100% of the viewport height */ 
+    width: 99vw; /* Set width to 100% of the viewport width */
+    border: none; /* Remove default border */
+}
+</style>
+<iframe src="http://localhost:5000/dashboard/"></iframe>
+
+{% endblock %}

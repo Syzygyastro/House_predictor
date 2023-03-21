@@ -188,3 +188,7 @@ def display_event(event_id):
         return render_template("event.html", event=ev)
     else:
         abort(404)
+
+@app.route("/stats")
+def dashboard():
+    return render_template("stats.html")
