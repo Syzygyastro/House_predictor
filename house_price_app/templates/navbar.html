@@ -12,24 +12,24 @@
 
         <!-- Icons -->
         <ul class="navbar-nav d-flex flex-row me-1">
-            <li class="nav-item me-3 me-lg-0">
+            <li id="Homepage">
                 <a class="nav-link text-white" href="/"><i class="fa fa-home"></i> Homepage</a>
             </li>
-            <li class="nav-item me-3 me-lg-0">
+            <li id="Statistics">
                 <a class="nav-link text-white" href="/stats"><i class="fa fa-bar-chart"></i> Statistics</a>
             </li>
-            <li class="nav-item me-3 me-lg-0">
+            <li id="Data">
                 <a class="nav-link text-white" href="/api"><i class="fa fa-database"></i> Data</a>
             </li>
             {% if current_user.is_anonymous %}
-            <li class="nav-item me-3 me-lg-0">
+            <li id="Register">
                 <a class="nav-link text-white" href="/register"><i class="fa fa-user-plus"></i> Register</a>
             </li>
-            <li class="nav-item me-3 me-lg-0">
+            <li id="Login">
                 <a class="nav-link text-white" href="/login"><i class="fa fa-user"></i> Login</a>
             </li>
             {% else %}
-            <li class="nav-item me-3 me-lg-0">
+            <li id="logout">
                 <a class="nav-link text-white" href="{{ url_for('logout') }}"><i class="fa fa-power-off"></i> Logout</a>
             {% endif %}
         </ul>

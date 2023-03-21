@@ -62,8 +62,7 @@ def test_yearly_data_selected(run_app_win, chrome_driver, flask_port):
     """
     url = f"http://127.0.0.1:5000/api"
     chrome_driver.get(url)
-    # Wait until the element with id="1" is on the page
-    # https://www.selenium.dev/documentation/webdriver/waits/ and then click on it
+    # Wait until the element with id="1952" is on the page and then click on it
     el_1 = WebDriverWait(chrome_driver, timeout=3).until(
         lambda d: d.find_element(By.ID, "1952")
     )
@@ -91,8 +90,10 @@ def test_home_nav_link_switch_to_statistics(run_app_win, chrome_driver, flask_po
     )
     el_1.click()
     nav_home = WebDriverWait(chrome_driver, timeout=3).until(
-        EC.element_to_be_clickable((By.ID, "nav-dashboard"))
+        EC.element_to_be_clickable((By.ID, "Statistics"))
     )
     nav_home.click()
     current_url = chrome_driver.current_url
     assert current_url == url_test
+
+    #python -m pytest -v tests/
