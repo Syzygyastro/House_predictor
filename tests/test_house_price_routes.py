@@ -14,6 +14,7 @@ def test_index_success(test_client):
     assert b"<title>UK House Prices</title>" in response.data
 
 
+
 def test_prediction_when_form_submitted(test_client, app):
     """
     GIVEN a running Flask app
@@ -85,3 +86,6 @@ def test_error_when_out_of_range_selected(test_client):
     response = test_client.post("/", data=form_data)
     assert response.status_code == 200
     assert b"This field is required." in response.data
+
+
+# python -m pytest -v tests/
