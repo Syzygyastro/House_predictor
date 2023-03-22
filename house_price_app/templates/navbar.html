@@ -1,36 +1,40 @@
-<!-- from https://getbootstrap.com/docs/5.2/components/navbar/ -->
-<nav class="navbar navbar-expand-lg bg-light">
+<!-- Navbar -->
+<head>
+    <link 
+    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+    rel="stylesheet"  type='text/css'>
+</head>
+<nav class="navbar navbar-expand-lg bg-black navbar-dark">
+    <!-- Container wrapper -->
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">UK House price predictor</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/dashboard/" id="nav-dashboard">Statistics</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/api" id="api">Data</a>
-                </li>
-                {% if current_user.is_anonymous %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-                </li>
-                {% endif %}
-            </ul>
-            </form>
-        </div>
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="#">UK House Price Predictor</a>
+
+        <!-- Icons -->
+        <ul class="navbar-nav d-flex flex-row me-1">
+            <li id="Homepage">
+                <a class="nav-link text-white" href="/"><i class="fa fa-home"></i> Homepage</a>
+            </li>
+            <li id="Statistics">
+                <a class="nav-link text-white" href="/stats"><i class="fa fa-bar-chart"></i> Statistics</a>
+            </li>
+            <li id="Data">
+                <a class="nav-link text-white" href="/api"><i class="fa fa-database"></i> Data</a>
+            </li>
+            {% if current_user.is_anonymous %}
+            <li id="Register">
+                <a class="nav-link text-white" href="/register"><i class="fa fa-user-plus"></i> Register</a>
+            </li>
+            <li id="Login">
+                <a class="nav-link text-white" href="/login"><i class="fa fa-user"></i> Login</a>
+            </li>
+            {% else %}
+            <li id="logout">
+                <a class="nav-link text-white" href="{{ url_for('logout') }}"><i class="fa fa-power-off"></i> Logout</a>
+            {% endif %}
+        </ul>
     </div>
+
+    <!-- Container wrapper -->
 </nav>
+<!-- Navbar -->
