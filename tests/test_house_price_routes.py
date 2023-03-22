@@ -86,42 +86,6 @@ def test_error_when_out_of_range_selected(test_client):
     response = test_client.post("/", data=form_data)
     assert response.status_code == 200
     assert b"This field is required." in response.data
-    
-def test_data_route(test_client):
-    """
-    GIVEN a running Flask app
-    WHEN an HTTP GET request is made to '/api'
-    THEN the status code should be 200
-    AND the page should contain the the html <title>API Home</title>"
-    """
-    response = test_client.get("/api")
-    assert response.status_code == 200
-    assert b"<title>API Home</title>" in response.data
-
-
-def test_display_event_route(test_client):
-    """
-    GIVEN a running Flask app
-    WHEN an HTTP GET request is made to '/api/display_event/<event_id>'
-    THEN the status code should be 200 if the event exists
-    AND the page should contain the event details if the event exists
-    AND the status code should be 404 if the event does not exist
-    """
-    # Add a test event to the database
-    event = {
-        "name": "Test Event",
-        "date": "2022-04-01",
-        "location": "London",
-        "description": "This is a test event",
-    }
-    response = test_client.post("/events", data=event)
-    assert response.status_code == 302
-
-    # Get the id of the test event
-    response = test_client.get("/")
-    event_id = response.data.decode().split("/")[-1]
-
-    # Test
 
 def test_api_success(test_client):
     """

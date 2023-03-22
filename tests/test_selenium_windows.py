@@ -60,7 +60,7 @@ def test_data_page_running(run_app_win,chrome_driver, flask_port):
     text = driver.find_element(By.TAG_NAME, 'h1').text
     assert "House price & GDP data from 1952" in text
     driver.quit()
-
+    
 
 def test_yearly_data_selected(run_app_win, chrome_driver, flask_port):
     """
