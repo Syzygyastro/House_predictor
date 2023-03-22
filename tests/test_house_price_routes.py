@@ -123,5 +123,25 @@ def test_display_event_route(test_client):
 
     # Test
 
+def test_api_success(test_client):
+    """
+    GIVEN a running Flask app
+    WHEN an HTTP GET request is made to '/api'
+    THEN the status code should be 200
+    AND the page should contain the the html <title>Past house price data</title>"
+    """
+    response = test_client.get("/api")
+    assert response.status_code == 200
+    assert b"<title>Past house price data</title>" in response.data
 
+def test_api_success(test_client):
+    """
+    GIVEN a running Flask app
+    WHEN an HTTP GET request is made to '/api/display_event/2004'
+    THEN the status code should be 200
+    AND the page should contain the the html <title>Past house price data</title>"
+    """
+    response = test_client.get("/api/display_event/2004")
+    assert response.status_code == 200
+    assert b"<title>2004</title>" in response.data
 # python -m pytest -v tests/
