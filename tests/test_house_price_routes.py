@@ -1,5 +1,6 @@
 from house_price_app.models import User
 from house_price_app import db
+from house_price_app.models import Event
 from flask import session
 
 def test_index_success(test_client):
@@ -108,4 +109,43 @@ def test_api_success(test_client):
     response = test_client.get("/api/display_event/2004")
     assert response.status_code == 200
     assert b"<title>2004</title>" in response.data
+
+# def test_display_event_route(test_client):
+#     """
+#     GIVEN a running Flask app
+#     WHEN an HTTP GET request is made to '/api/display_event/<event_id>'
+#     THEN the status code should be 200 if the event exists
+#     AND the page should contain the event details if the event exists
+#     AND the status code should be 404 if the event does not exist
+#     """
+#     # Add a test event to the database
+#     event = {
+#         "name": "Test Event",
+#         "date": "2022-04-01",
+#         "location": "London",
+#         "description": "This is a test event",
+#     }
+#     response = test_client.post("/", data=event)
+#     print(response.status_code)
+#     assert response.status_code == 200
+
+#     # Get the id of the test event
+#     response = test_client.get("/api")
+#     event_id = response.data.decode().split("/")[-1]
+
+#     # Test event exists
+#     response = test_client.get(f"/api/display_event/{event_id}")
+#     assert response.status_code == 200
+#     assert b"Test Event" in response.data
+#     assert b"2022-04-01" in response.data
+#     assert b"London" in response.data
+#     assert b"This is a test event" in response.data
+
+#     # Test event does not exist
+#     response = test_client.get("/api/display_event/-111")
+#     assert response.status_code == 404
+#     assert b"Event not found." in response.data
+
+
+
 # python -m pytest -v tests/
