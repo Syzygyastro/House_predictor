@@ -59,7 +59,8 @@ def create_app(config_object):
         # Create the tables in the database if they do not already exist
 
         db.create_all()
-
+    from house_price_app.blueprint_routes import main_bp
+    app.register_blueprint(main_bp)
     return app
 
 def run_app():
@@ -95,7 +96,7 @@ def run_app():
 
     # Uses a helper function to initialise extensions
 
-    from house_price_app.routes import main_bp
+    from house_price_app.blueprint_routes import main_bp
     app.register_blueprint(main_bp)
     return app
 #python -m flask --app 'house_price_app:run_app()' --debug run
