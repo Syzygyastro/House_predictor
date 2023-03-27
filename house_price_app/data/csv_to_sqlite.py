@@ -22,7 +22,7 @@ houses_prices = pd.read_csv(house_price_file,keep_default_na=False, na_values=na
 houses_prices = houses_prices.rename(columns={"Price (All)": "price_all", "Price (New)": "price_new",
                             "Price (Modern)": "price_modern", "Price (Older)": "price_old", "GDP": "gdp"})
 # Write the data to tables in a sqlite database
-dtype_noc = {
+data = {
     "Date": types.INTEGER(),
     "price_all": types.FLOAT(),
     "price_new": types.FLOAT(),
@@ -32,4 +32,4 @@ dtype_noc = {
 }
 # Write the data to a table in the sqlite database (data/iris.db)
 house_price.to_sql("house_prices_&_GDP_prepared", engine, if_exists="append", index=False)
-houses_prices.to_sql("house_prices", engine, if_exists="append", index=False, dtype=dtype_noc)
+houses_prices.to_sql("house_prices", engine, if_exists="append", index=False, dtype=data)

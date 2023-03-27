@@ -1,4 +1,4 @@
-from house_price_app.models import Event
+from house_price_app.models import Year
 from house_price_app import db, ma
 
 
@@ -8,11 +8,11 @@ from house_price_app import db, ma
 # -------------------------
 
 
-class EventSchema(ma.SQLAlchemyAutoSchema):
+class YearSchema(ma.SQLAlchemyAutoSchema):
     """Marshmallow schema for the attributes of an event class. Inherits all the attributes from the Event class."""
 
     class Meta:
-        model = Event
+        model = Year
         include_fk = True
         load_instance = True
         sqla_session = db.session

@@ -1,6 +1,6 @@
 from house_price_app.models import User
 from house_price_app import db
-from house_price_app.models import Event
+from house_price_app.models import Year
 from flask import session
 
 def test_index_success(test_client):
@@ -106,35 +106,35 @@ def test_api_success(test_client):
     THEN the status code should be 200
     AND the page should contain the the html <title>Past house price data</title>"
     """
-    response = test_client.get("/api/display_event/2004")
+    response = test_client.get("/api/display_years/2004")
     assert response.status_code == 200
     assert b"<title>2004</title>" in response.data
 
-# def test_display_event_route(test_client):
+# def test_display_years_route(test_client):
 #     """
 #     GIVEN a running Flask app
-#     WHEN an HTTP GET request is made to '/api/display_event/<event_id>'
-#     THEN the status code should be 200 if the event exists
-#     AND the page should contain the event details if the event exists
-#     AND the status code should be 404 if the event does not exist
+#     WHEN an HTTP GET request is made to '/api/display_years/<year>'
+#     THEN the status code should be 200 if the data exists
+#     AND the page should contain the data details if the data exists
+#     AND the status code should be 404 if the data does not exist
 #     """
-#     # Add a test event to the database
-#     event = {
+#     # Add a test data to the database
+#     data = {
 #         "name": "Test Event",
 #         "date": "2022-04-01",
 #         "location": "London",
 #         "description": "This is a test event",
 #     }
-#     response = test_client.post("/", data=event)
+#     response = test_client.post("/", data=data)
 #     print(response.status_code)
 #     assert response.status_code == 200
 
 #     # Get the id of the test event
 #     response = test_client.get("/api")
-#     event_id = response.data.decode().split("/")[-1]
+#     year = response.data.decode().split("/")[-1]
 
 #     # Test event exists
-#     response = test_client.get(f"/api/display_event/{event_id}")
+#     response = test_client.get(f"/api/display_years/{year}")
 #     assert response.status_code == 200
 #     assert b"Test Event" in response.data
 #     assert b"2022-04-01" in response.data
@@ -142,9 +142,9 @@ def test_api_success(test_client):
 #     assert b"This is a test event" in response.data
 
 #     # Test event does not exist
-#     response = test_client.get("/api/display_event/-111")
+#     response = test_client.get("/api/display_years/-111")
 #     assert response.status_code == 404
-#     assert b"Event not found." in response.data
+#     assert b"data not found." in response.data
 
 
 

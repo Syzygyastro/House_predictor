@@ -36,7 +36,7 @@ class User(UserMixin, db.Model):
         return f"{clsname}: <{self.id}, {self.email}>"
     
 
-class Event(db.Model):
+class Year(db.Model):
     """Paralympic event"""
 
     __tablename__ = "house_prices"
