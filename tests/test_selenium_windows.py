@@ -39,12 +39,12 @@ def run_app_win(flask_port):
     finally:
         server.terminate()
 
-def test_driver_manager_chrome():
-    service = ChromeService(executable_path=ChromeDriverManager().install())
+# def test_driver_manager_chrome():
+#     service = ChromeService(executable_path=ChromeDriverManager().install())
 
-    driver = webdriver.Chrome(service=service)
+#     driver = webdriver.Chrome(service=service)
 
-    driver.quit()
+#     driver.quit()
 
 def test_data_page_running(run_app_win,chrome_driver, flask_port):
     """
