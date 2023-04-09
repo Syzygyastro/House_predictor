@@ -28,12 +28,9 @@ def index():
 
     if form.validate_on_submit():
         # Get all values from the form
-
         # Make the prediction
         prediction = make_prediction(form.year_wanted.data, form.house_type_selection.data)
-
         prediction_text = f"Predicted House price for selected year is: £{prediction}"
-
         return render_template(
             "index.html", form=form, prediction_text=prediction_text
         )

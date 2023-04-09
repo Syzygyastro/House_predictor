@@ -96,4 +96,3 @@ def test_home_nav_link_switch_to_statistics(run_app_win, chrome_driver, flask_po
     nav_home.click()
     current_url = chrome_driver.current_url
     assert current_url == url_test
-
