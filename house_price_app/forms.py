@@ -15,9 +15,9 @@ class PredictionForm(FlaskForm):
     # https://wtforms.readthedocs.io/en/2.3.x/fields/#wtforms.fields.DecimalField
     year_wanted = IntegerField("Desired Year", validators=[DataRequired(), NumberRange(min=2022, max=2060, message=None)])
     house_type_selection = SelectField("Desired house type",
-                                        choices=[('Price (All)', 'Average Houses'),
-                                                 ('Price (New)', 'Newer Houses'), ('Price (Modern)', 'Modern houses'),
-                                                 ('Price (Older)', 'Older Houses')], validators=[DataRequired()])
+                                       choices=[('Price (All)', 'Average Houses'),
+                                                ('Price (New)', 'Newer Houses'), ('Price (Modern)', 'Modern houses'),
+                                                ('Price (Older)', 'Older Houses')], validators=[DataRequired()])
 
 
 class RegisterForm(FlaskForm):

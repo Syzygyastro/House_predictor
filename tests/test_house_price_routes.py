@@ -31,7 +31,6 @@ def test_prediction_when_form_submitted(test_client, app):
     assert b"Predicted House price for selected year is" in response.data
 
 
-
 def test_new_user_created_when_form_submitted_and_redirect(test_client):
     """
     GIVEN a running Flask app
