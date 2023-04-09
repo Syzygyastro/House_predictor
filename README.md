@@ -15,3 +15,12 @@ To run the app:
 To run the tests:
 
 `python -m pytest -v tests/`
+
+## Continuous Integration evidence
+
+Passing all tests:
+
+
+Evidence for linting:
+
+Note: the remaining errors are ignored as the app cannot run if these are removed.
