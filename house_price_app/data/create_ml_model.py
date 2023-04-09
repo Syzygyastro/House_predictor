@@ -49,8 +49,6 @@ def create_model(df, alg, pickle_file, house_type):
 
     # Test the model
     # Call the .predict() function of the model and feed in the testing data
-    predictions = model.predict(x_test)
-    
     # print(x_test)
     # print(y_test)
     # print(predictions)
@@ -80,7 +78,6 @@ def main():
     pickle_file_older_lr = Path(__file__).parent.joinpath("model_old_lr.pkl")
     create_model(iris_data, model_lr, pickle_file_older_lr, "Price (Older)")
 
+
 if __name__ == "__main__":
     main()
-
- 

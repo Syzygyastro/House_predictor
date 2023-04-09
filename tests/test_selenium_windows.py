@@ -1,15 +1,11 @@
 import subprocess
 import socket
-import requests
 import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
-from selenium import webdriver
+
 
 @pytest.fixture(scope="module")
 def flask_port():
@@ -39,14 +35,8 @@ def run_app_win(flask_port):
     finally:
         server.terminate()
 
-# def test_driver_manager_chrome():
-#     service = ChromeService(executable_path=ChromeDriverManager().install())
 
-#     driver = webdriver.Chrome(service=service)
-
-#     driver.quit()
-
-def test_data_page_running(run_app_win,chrome_driver, flask_port):
+def test_data_page_running(run_app_win, chrome_driver, flask_port):
     """
     GIVEN a running app
     WHEN the data page is accessed successfully
@@ -60,7 +50,7 @@ def test_data_page_running(run_app_win,chrome_driver, flask_port):
     text = driver.find_element(By.TAG_NAME, 'h1').text
     assert "House price & GDP data from 1952" in text
     driver.quit()
-    
+
 
 def test_yearly_data_selected(run_app_win, chrome_driver, flask_port):
     """
@@ -107,4 +97,3 @@ def test_home_nav_link_switch_to_statistics(run_app_win, chrome_driver, flask_po
     current_url = chrome_driver.current_url
     assert current_url == url_test
 
-    #python -m pytest -v tests/

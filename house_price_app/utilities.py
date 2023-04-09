@@ -1,10 +1,7 @@
-import sys
 from house_price_app import db
-from house_price_app.models import  Year
+from house_price_app.models import Year
 from house_price_app.schemas import YearSchema
 import sqlite3
-import json
-
 
 # Marshmallow Schemas
 years_schema = YearSchema(many=True)
@@ -19,6 +16,7 @@ def get_years():
     all_years = db.session.execute(db.select(Year)).scalars()
     years_json = years_schema.dump(all_years)
     return years_json
+
 
 def get_data(row_id):
     db_file = "house_price_app\data\house_prices_&_GDP_prepared.db"

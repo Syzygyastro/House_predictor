@@ -1,6 +1,6 @@
 from pathlib import Path
 import pandas as pd
-from sqlalchemy import create_engine,types
+from sqlalchemy import create_engine, types
 
 # Define the database file name and location
 db_file = Path(__file__).parent.joinpath("house_prices_&_GDP_prepared.db")
@@ -18,9 +18,9 @@ na_values = [
 # Read the iris data to a pandas dataframe
 house_price_file = Path(__file__).parent.joinpath("house_prices_&_GDP_prepared.csv")
 house_price = pd.read_csv(house_price_file)
-houses_prices = pd.read_csv(house_price_file,keep_default_na=False, na_values=na_values)
+houses_prices = pd.read_csv(house_price_file, keep_default_na=False, na_values=na_values)
 houses_prices = houses_prices.rename(columns={"Price (All)": "price_all", "Price (New)": "price_new",
-                            "Price (Modern)": "price_modern", "Price (Older)": "price_old", "GDP": "gdp"})
+                                              "Price (Modern)": "price_modern", "Price (Older)": "price_old", "GDP": "gdp"})
 # Write the data to tables in a sqlite database
 data = {
     "Date": types.INTEGER(),

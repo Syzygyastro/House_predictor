@@ -1,15 +1,11 @@
 from house_price_app.utilities import get_years, get_data
-# from house_price_app.models import Year
-# from house_price_app.schemas import EventSchema
-from flask import render_template, Blueprint, abort, current_app as app
-# Marshmallow Schemas
-# events_schema = EventSchema(many=True)
-# event_schema = EventSchema()
-
+from flask import render_template, Blueprint, abort
 
 
 # Define the Blueprint
 main_bp = Blueprint("main", __name__)
+
+
 @main_bp.route("/api")
 def data():
     """Returns the home page"""

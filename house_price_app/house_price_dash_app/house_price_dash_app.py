@@ -1,9 +1,10 @@
-from dash import html, dcc, Dash, dash_table, Input, Output
+from dash import html, Dash
 import dash_bootstrap_components as dbc
 from house_price_app.house_price_dash_app import Line_graph
 from house_price_app.house_price_dash_app import Scatter_plot
 from house_price_app.house_price_dash_app import Violin_histogram
 from house_price_app.house_price_dash_app import Bar_chart
+
 
 def create_dash_app(flask_app):
     """Creates Dash as a route in Flask

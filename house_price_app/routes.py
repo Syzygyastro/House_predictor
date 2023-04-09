@@ -1,5 +1,4 @@
 from pathlib import Path
-import numpy as np
 from datetime import timedelta
 from urllib.parse import urlparse, urljoin
 import pickle
@@ -13,16 +12,14 @@ from flask import (
     abort,
 )
 from flask_login import logout_user, login_required, login_user
-import numpy as np
 from sqlalchemy.exc import IntegrityError, NoResultFound
 from house_price_app.forms import LoginForm, PredictionForm, RegisterForm
 from house_price_app import db, login_manager
 from house_price_app.models import User
 
-
-
-ml_model = {"Price (All)": "model_all_lr.pkl", "Price (New)": "model_new_lr.pkl", \
+ml_model = {"Price (All)": "model_all_lr.pkl", "Price (New)": "model_new_lr.pkl",
             "Price (Modern)": "model_modern_lr.pkl", "Price (Older)": "model_old_lr.pkl"}
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -43,7 +40,6 @@ def index():
     return render_template("index.html", form=form)
 
 
-
 def make_prediction(year, house_type):
     """Takes the flower values, makes a model using the prediction and returns a string of the predicted flower variety
 
@@ -62,7 +58,7 @@ def make_prediction(year, house_type):
     prediction = HOUSE_PRICE_MODEL.predict([[int(year)]])
 
     # convert the prediction to the variety name
-    
+
     variety = int(prediction[0])
 
     return variety
@@ -82,7 +78,7 @@ def register():
             # Remove to replace with Flash message
             # text = f"<p>You are registered! {repr(new_user)}</p>"
             # return text
-            text = f"You are registered!"
+            text = "You are registered!"
             flash(text)
             return redirect(url_for("index"))
         except IntegrityError:
@@ -162,6 +158,7 @@ def get_safe_redirect():
     if url and is_safe_url(url):
         return url
     return "/"
+
 
 @app.route("/stats")
 def dashboard():

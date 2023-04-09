@@ -63,6 +63,7 @@ def create_app(config_object):
     app.register_blueprint(main_bp)
     return app
 
+
 def run_app():
     """Create and configure the Flask app"""
     app = Flask(__name__)
@@ -99,4 +100,3 @@ def run_app():
     from house_price_app.blueprint_routes import main_bp
     app.register_blueprint(main_bp)
     return app
-#python -m flask --app 'house_price_app:run_app()' --debug run

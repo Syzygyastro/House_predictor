@@ -1,8 +1,6 @@
 from house_price_app import db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import current_app as app
-from house_price_app import db
 
 
 class User(UserMixin, db.Model):
@@ -34,7 +32,7 @@ class User(UserMixin, db.Model):
         """
         clsname = self.__class__.__name__
         return f"{clsname}: <{self.id}, {self.email}>"
-    
+
 
 class Year(db.Model):
     """Paralympic event"""
@@ -53,4 +51,5 @@ class Year(db.Model):
         :returns str
         """
         clsname = self.__class__.__name__
-        return f"<{clsname}: {self.Date},{self.price_all}, {self.price_new}, {self.price_modern}, {self.price_old}, {self.gdp}>"
+        return f"<{clsname}: {self.Date},{self.price_all}, {self.price_new},\
+                  {self.price_modern}, {self.price_old}, {self.gdp}>"

@@ -4,7 +4,6 @@ import pytest
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver import Chrome
 from house_price_app import create_app, config
-import multiprocessing
 
 
 # Used for the Flask routes tests and the Selenium tests
