@@ -30,6 +30,6 @@ data = {
     "price_old": types.FLOAT(),
     "gdp": types.INTEGER(),
 }
-# Write the data to a table in the sqlite database (data/iris.db)
+# Write the data to a table in the sqlite database (data/house_prices_&_GDP_prepared.db)
 house_price.to_sql("house_prices_&_GDP_prepared", engine, if_exists="append", index=False)
 houses_prices.to_sql("house_prices", engine, if_exists="append", index=False, dtype=data)
