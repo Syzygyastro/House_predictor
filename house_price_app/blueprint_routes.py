@@ -16,16 +16,16 @@ def data():
 @main_bp.route("/api/display_years/<year>")
 def display_event(year):
     '''
-    What does it do?
-        
+    Renders the display with the year and its corresponding data
+
     Parameters
     ----------
-    price_type: str
-        Contains the name of the coloumn for the house price type from the prepared dataset
+    year: Any
+        the year
     Returns
     -------
-    html.Div: 
-        list that contains an integer count of which season had the lowest price for that particular house type
+    render_template: function
+        function to render the template using the year and its data
     '''
     data = get_data(year)
     if data:
