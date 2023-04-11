@@ -127,7 +127,19 @@ def logout():
 
 @login_manager.user_loader
 def load_user(user_id):
-    """Takes a user ID and returns a user object or None if the user does not exist"""
+    '''
+    Takes the User ID and returns a user object or None if the user does not exist
+
+    Parameters
+    ----------
+    user_id: Any
+        the id of the user
+    Returns
+    -------
+    user: Any
+        the user object
+    None
+    '''
     if user_id is not None:
         user = db.get_or_404(User, user_id)
         return user
@@ -136,6 +148,18 @@ def load_user(user_id):
 
 def is_safe_url(target):
     """Validate that the URL is from our app"""
+    '''
+    Validates that the URL is from our app
+
+    Parameters
+    ----------
+    target: Any
+        the URL
+    Returns
+    -------
+    function: 
+        redirects the url to our app if it isnt in the correct form
+    '''
     host_url = urlparse(request.host_url)
     redirect_url = urlparse(urljoin(request.host_url, target))
     return (
