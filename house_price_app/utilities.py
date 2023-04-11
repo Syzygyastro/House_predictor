@@ -19,9 +19,18 @@ def get_years():
 
 
 def get_data(row_id):
-    """Function to 
+    '''
+    Function to fetch data from database and converts rows of data into dictionary format.
 
-    """
+    Parameters
+    ----------
+    row_id: str
+        id of the specific row being used
+    Returns
+    -------
+    row_dict: dict[str
+        dictionary with they keys and their corresponding rows
+    '''
     db_file = "house_price_app\data\house_prices_&_GDP_prepared.db"
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
