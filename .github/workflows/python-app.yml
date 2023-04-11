@@ -38,4 +38,4 @@ jobs:
 
     - name: Test with pytest
       run: |
-        python -m pytest --verbose --cov=house_price_app --cov-report term-missing
+        python -m pytest --verbose --cov=test_house_price_routes --cov-report term-missing
