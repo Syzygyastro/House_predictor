@@ -15,7 +15,18 @@ def data():
 
 @main_bp.route("/api/display_years/<year>")
 def display_event(year):
-    """Returns the event detail page"""
+    '''
+    What does it do?
+        
+    Parameters
+    ----------
+    price_type: str
+        Contains the name of the coloumn for the house price type from the prepared dataset
+    Returns
+    -------
+    html.Div: 
+        list that contains an integer count of which season had the lowest price for that particular house type
+    '''
     data = get_data(year)
     if data:
         return render_template("data_output.html", data=data)

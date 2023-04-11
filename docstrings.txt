@@ -1,7 +1,4 @@
-Bar_chart.py - Line 59 (def bar_layout)
-Line_graph.py - Line 82 (def line_layout)
-Scatter_plot.py - Line 43 (def scatter_layout)
-Violin_histrogram.py - Line 56 (def violin_layout)
+
 All of __init__.py
 
 Layout
