@@ -19,6 +19,9 @@ def get_years():
 
 
 def get_data(row_id):
+    """Function to 
+
+    """
     db_file = "house_price_app\data\house_prices_&_GDP_prepared.db"
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()

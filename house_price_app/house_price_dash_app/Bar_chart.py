@@ -57,6 +57,18 @@ fig = px.bar(seasonal_df, x=0, y=2, color=1, title="Comparing seasons for cheape
 
 
 def bar_layout():
+    '''
+    What does it do?
+
+    Parameters
+    ----------
+    price_type: str
+        Contains the name of the coloumn for the house price type from the prepared dataset
+    Returns
+    -------
+    html.Div: 
+        list that contains an integer count of which season had the lowest price for that particular house type
+    '''
     return html.Div([
 
         html.H4(children="Is there a certain season/month where house prices are the cheapest?", className="text-center"),
