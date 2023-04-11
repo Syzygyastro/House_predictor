@@ -19,17 +19,33 @@ class User(UserMixin, db.Model):
         self.password = generate_password_hash(password)
 
     def check_password(self, password):
-        """Check the plain text password matches the hashed password
+        '''
+        Checks the plain text password and matches it to the hashed password
 
-        :return Boolean:
-        """
+        Parameters
+        ----------
+        password: Any
+            The password of the user that is hashed
+        Returns
+        -------
+        check_password_hash: Boolean
+            function to check if the password matches
+        '''
         return check_password_hash(self.password, password)
 
     def __repr__(self):
-        """
+        '''
         Returns the attributes of a User as a string, except for the password
-        :returns str
-        """
+
+        Parameters
+        ----------
+        self: Self@User
+            The attributes of self
+        Returns
+        -------
+        str 
+            Attributes of the user, not the password
+        '''
         clsname = self.__class__.__name__
         return f"{clsname}: <{self.id}, {self.email}>"
 
@@ -46,10 +62,18 @@ class Year(db.Model):
     gdp = db.Column(db.Integer)
 
     def __repr__(self):
-        """
+        '''
         Returns the attributes of the event as a string
-        :returns str
-        """
+
+        Parameters
+        ----------
+        self: Self@User
+            the attributes of self
+        Returns
+        -------
+        str 
+            Attributes of the event as a string
+        '''
         clsname = self.__class__.__name__
         return f"<{clsname}: {self.Date},{self.price_all}, {self.price_new},\
                   {self.price_modern}, {self.price_old}, {self.gdp}>"
