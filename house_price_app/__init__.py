@@ -8,7 +8,6 @@ from house_price_app.house_price_dash_app.house_price_dash_app import (
 )
 
 
-# Iris app folder
 PROJECT_ROOT = Path(__file__).parent
 
 # Create a global SQLAlchemy object

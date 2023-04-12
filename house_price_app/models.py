@@ -51,7 +51,7 @@ class User(UserMixin, db.Model):
 
 
 class Year(db.Model):
-    """Paralympic event"""
+    """House prices"""
 
     __tablename__ = "house_prices"
     Date = db.Column(db.Integer, primary_key=True)

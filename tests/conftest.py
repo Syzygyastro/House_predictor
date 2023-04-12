@@ -40,22 +40,6 @@ def chrome_driver():
     driver.quit()
 
 
-# Data for any of the tests
-@pytest.fixture(scope="module")
-def form_data():
-    """Data for a prediction.
-
-    Uses: 7.0,3.2,4.7,1.4,versicolor
-    """
-    form_data_versicolor = {
-        "sepal_length": 7.0,
-        "sepal_width": 3.2,
-        "petal_length": 4.7,
-        "petal_width": 1.4,
-    }
-    yield form_data_versicolor
-
-
 def generate_random_email():
     """Create random email addresses for testing with random domain names"""
     valid_chars = "abcdefghijklmnopqrstuvwxyz1234567890"

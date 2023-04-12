@@ -9,9 +9,14 @@ year_schema = YearSchema()
 
 
 def get_years():
-    """Function to get all events from the database as objects and convert to json.
+    """Function to get all years from the database as objects and convert to json.
 
-    NB: This was extracted to a separate function as it is used in multiple places
+    Parameters
+
+    Returns
+    -------
+    years_json: Json string
+        dictionary with they keys and their corresponding rows
     """
     all_years = db.session.execute(db.select(Year)).scalars()
     years_json = years_schema.dump(all_years)
@@ -28,7 +33,7 @@ def get_data(row_id):
         id of the specific row being used
     Returns
     -------
-    row_dict: dict[str
+    row_dict: dictionary
         dictionary with they keys and their corresponding rows
     '''
     db_file = "house_price_app\data\house_prices_&_GDP_prepared.db"

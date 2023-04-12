@@ -18,7 +18,7 @@ def test_prediction_when_form_submitted(test_client, app):
     """
     GIVEN a running Flask app
     WHEN an HTTP POST request is made to '/' with form data
-    THEN the page should return a prediction result with the test "Predicted Iris type"
+    THEN the page should return a prediction result with the test "Predicted House price for selected year is"
     AND the status code should be 200 OK
     """
     form_data = {
@@ -35,7 +35,6 @@ def test_new_user_created_when_form_submitted_and_redirect(test_client):
     """
     GIVEN a running Flask app
     WHEN an HTTP POST request is made to '/register' with form data
-    THEN the page should return a message "You are registered!"
     AND the text of the email should be on the page
     AND the status code should be 200 OK
     """
