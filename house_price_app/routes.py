@@ -157,7 +157,7 @@ def is_safe_url(target):
         the URL
     Returns
     -------
-    function: 
+    function:
         redirects the url to our app if it isnt in the correct form
     '''
     host_url = urlparse(request.host_url)
