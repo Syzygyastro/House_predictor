@@ -43,7 +43,7 @@ class User(UserMixin, db.Model):
             The attributes of self
         Returns
         -------
-        str 
+        str
             Attributes of the user, not the password
         '''
         clsname = self.__class__.__name__
@@ -71,7 +71,7 @@ class Year(db.Model):
             the attributes of self
         Returns
         -------
-        str 
+        str
             Attributes of the event as a string
         '''
         clsname = self.__class__.__name__
