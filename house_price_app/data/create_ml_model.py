@@ -27,7 +27,7 @@ def create_model(df, alg, pickle_file, house_type):
     # y = target values, last column of the data frame
     y = df[house_type]
 
-    # Split the data into 80% training and 20% testing 
+    # Split the data into 80% training and 20% testing
     x_train, x_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
     )
