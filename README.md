@@ -2,8 +2,6 @@
 
 ## Set-up
 
-Url link to our repository: https://github.com/ucl-comp0035/comp0034-cw2-g-team-22-1.git
-
 You will need to a Python environment e.g create and activate a venv.
 
 Install the packages from requirements.txt.
